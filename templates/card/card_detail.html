@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="detail">
+        <h4>Серия: {{ card.series }}</h4>
+        <h4>Номер: {{ card.number }}</h4>
+        <h4>Дата Выпуска: {{ card.release_date }}</h4>
+        <h4>Дата окончания: {{ card.expiration_date }}</h4>
+        <h4>Статус: {{ card.status }}</h4>
+        <a href="{% url 'card:card_delete' card.pk %}"><button  style="color: red">Удалить</button></a>
+        <a href="{% url 'card:card_update' card.pk %}"><button  style="color: red">Редактировать</button></a>
+    </div>
+{% endblock %}

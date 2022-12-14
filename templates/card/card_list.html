@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for card in cards %}
+        <div class="outline">
+            <a href="{% url 'card:card_detail' card.pk %}"><h3>Профил</h3></a>
+            <h4>Серия: {{ card.series }}</h4>
+            <h4>Номер: {{ card.number }}</h4>
+            <h4>Дата Выпуска: {{ card.release_date }}</h4>
+            <h4>Дата окончания: {{ card.expiration_date }}</h4>
+            <h4>Срок использование: {{ card.date_use }}</h4>
+            <h4>Статус: {{ card.status }}</h4>
+        </div>
+        <br>
+    {% endfor %}
+
+{% endblock %}
+
+{% block menu %}
+    <form method="POST">
+    {% csrf_token %}
+        <label for="fields">Искать по:</label><br>
+          <select name="fields" id="fields">
+            <option value="series">Серия</option>
+            <option value="number">Номер</option>
+            <option value="status">Статус</option>
+            <input type="text" name="field"><br>
+          </select>
+        <br>
+        <label for="field">Искать по дата:</label><br>
+          <select name="date" id="date">
+            <option value="r_date">Дата выпуск</option>
+            <option value="e_date">Дата окончание</option>
+            <input type="datetime-local" name="date_field"><br>
+          </select>
+        <br>
+    <button type="submit">Найти</button>
+    </form>
+{% endblock %}

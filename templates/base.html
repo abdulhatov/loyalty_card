@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Card</title>
+    <link rel="stylesheet" href="{% static 'card/css/style.css' %}">
+</head>
+<body>
+
+<div class="Header">
+    <h1>Cards</h1>
+</div>
+
+<div class="Menu">
+    <div class="Generate-card">
+        <a href="{% url 'card:card_generate' %}"><button>Генерация карта</button></a>
+    </div><br><br>
+    {% block menu %}
+    {% endblock %}
+</div>
+
+<div class="Content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<div class="Footer">
+    <h1>Footer</h1>
+</div>
+
+</body>
+</html>
